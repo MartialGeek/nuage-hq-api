@@ -1,0 +1,12 @@
+const config = {
+  port: 8080,
+  couchdb: {
+    user: 'root',
+    password: 'root',
+    scheme: 'http',
+    host: 'couchdb',
+    port: 5984
+  }
+};
+
+export default config;

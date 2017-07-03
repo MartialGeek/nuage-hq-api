@@ -1,10 +1,11 @@
 export class HomeController {
-    constructor(logger) {
+    constructor(logger, db) {
         this.logger = logger;
+        this.db = db;
     }
 
     indexAction(req, res) {
         this.logger.debug('HomeController::indexAction');
-        res.json({status: 'That rooooolls!'});
+        this.db.getInfo().then((data) => { res.json(data) });
     }
 }

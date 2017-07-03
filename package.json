@@ -8,6 +8,7 @@
     "watch": "babel-node --presets=env"
   },
   "dependencies": {
+    "couchdb-promises": "^3.0.0",
     "express": "^4.15.2",
     "morgan": "^1.8.1",
     "winston": "^2.3.1"

@@ -10,3 +10,14 @@ services:
         environment:
             APP_PORT: 8080
             APP_ENV: dev
+    couchdb:
+        image: klaemo/couchdb:latest
+        volumes:
+            - couchdb_data:/opt/couchdb/data
+        ports:
+            - "5984:5984"
+#        environment:   Un-comment the credentials right after defining them in the Futon interface
+#            COUCHDB_USER: root
+#            COUCHDB_PASSWORD: root
+volumes:
+    couchdb_data:
