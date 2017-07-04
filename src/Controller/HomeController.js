@@ -1,4 +1,4 @@
-export class HomeController {
+class HomeController {
     constructor(logger, db) {
         this.logger = logger;
         this.db = db;
@@ -9,3 +9,5 @@ export class HomeController {
         this.db.getInfo().then((data) => { res.json(data) });
     }
 }
+
+export default HomeController;

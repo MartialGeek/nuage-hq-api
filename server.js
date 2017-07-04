@@ -11,6 +11,7 @@ app.env = process.env.APP_ENV || 'prod';
 app.port = process.env.APP_PORT || config.port;
 app.logger = logger;
 app.logger.level = app.env === 'prod' ? 'info' : 'debug';
+app.config = config;
 
 // Services definition for dependency injection
 const buildCoudbDbUrl = (config) => {

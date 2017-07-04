@@ -1,7 +1,7 @@
 import express from 'express';
-import {HomeController} from '../../src/Controller/HomeController';
+import HomeController from '../../src/Controller/HomeController';
 
-export const homeRouting = (app) => {
+const homeRouting = (app) => {
     const router = express.Router();
     const controller = new HomeController(app.logger, app.db);
 
@@ -9,3 +9,5 @@ export const homeRouting = (app) => {
 
     return router;
 };
+
+export default homeRouting;
