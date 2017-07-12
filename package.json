@@ -9,6 +9,7 @@
     "console": "babel-node bin/console"
   },
   "dependencies": {
+    "bcrypt": "^1.0.2",
     "couchdb-promises": "^3.0.0",
     "express": "^4.15.2",
     "joi": "^10.6.0",
