@@ -18,7 +18,7 @@ class UserRepository {
   /**
    * Finds a user by its email
    * @param  {string} email The email of the user
-   * @return {User} The user document found
+   * @return {Promise} A promise with the found user
    * @throws {UserNotFound}
    */
   async findByEmail(email) {
@@ -43,6 +43,7 @@ class UserRepository {
   /**
    * Inserts a user in the database
    * @param  {User}  user
+   * @return {Promise}
    * @throws {UserAlreadyExists}
    */
   async insert(user) {

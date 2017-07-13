@@ -6,7 +6,8 @@ const config = {
     scheme: 'http',
     host: 'couchdb',
     port: 5984
-  }
+  },
+  jwtSecret: '376RY5D+5Z687q63zjYU'
 };
 
 export default config;
