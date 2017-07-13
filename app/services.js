@@ -1,6 +1,7 @@
 import logger from 'winston';
 import couchdb from 'couchdb-promises';
 import PasswordEncoder from '../src/Security/PasswordEncoder';
+import Token from '../src/Security/Token';
 import UserValidator from '../src/User/UserValidator';
 import UserRepository from '../src/User/UserRepository';
 import UserService from '../src/User/UserService';
@@ -35,15 +36,24 @@ const registerServices = (app) => {
       return new UserValidator();
     },
     repository: () => {
-      return new UserRepository(app.db(), app.uuidGenerator(), app.user.entityFactory());
+      return new UserRepository(
+        app.db(),
+        app.uuidGenerator(),
+        app.user.entityFactory()
+      );
     },
     service: () => {
-      return new UserService(app.user.repository(), app.user.validator(), app.security.passwordEncoder());
+      return new UserService(
+        app.user.repository(),
+        app.user.validator(),
+        app.security.passwordEncoder(),
+        app.security.token()
+      );
     },
     entityFactory: () => {
       return new UserEntityFactory(app.user.validator());
     }
-  }
+  };
 
   app.uuidGenerator = () => {
     return new UuidV4Generator(uuidv4);
@@ -52,6 +62,9 @@ const registerServices = (app) => {
   app.security = {
     passwordEncoder: () => {
       return new PasswordEncoder();
+    },
+    token: () => {
+      return new Token(app.config.security);
     }
   };
 

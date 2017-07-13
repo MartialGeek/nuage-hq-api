@@ -7,7 +7,10 @@ const config = {
     host: 'couchdb',
     port: 5984
   },
-  jwtSecret: '376RY5D+5Z687q63zjYU'
+  security: {
+    secret: '376RY5D+5Z687q63zjYU',
+    expiration: '1h'
+  }
 };
 
 export default config;

@@ -20,9 +20,8 @@ class SecurityController {
     this
       .userService
       .authenticate(req.body.email, req.body.password)
-      .then(user => {
-        console.log(`Authenticated user: ${JSON.stringify(user)}`);
-        return res.json('User authenticated');
+      .then(token => {
+        return res.json(token);
       })
       .catch(err => {
         if (err instanceof InvalidPassword) {

@@ -4,10 +4,11 @@ import UserNotFound from './UserNotFound';
 import InvalidPassword from '../Security/InvalidPassword';
 
 class UserService {
-  constructor(repository, validator, passwordEncoder) {
+  constructor(repository, validator, passwordEncoder, token) {
     this.repository = repository;
     this.validator = validator;
     this.passwordEncoder = passwordEncoder;
+    this.token = token;
   }
 
   /**
@@ -26,7 +27,7 @@ class UserService {
   }
 
   /**
-   * Authenticates a user
+   * Authenticates a user and returns the generated token
    * @param  {string} email
    * @param  {string} password
    * @return {Promise}
@@ -40,7 +41,9 @@ class UserService {
       throw new InvalidPassword();
     }
 
-    return user;
+    return await this.token.generate({
+      userId: user._id
+    });
   }
 }
 

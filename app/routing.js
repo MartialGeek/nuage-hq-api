@@ -13,7 +13,7 @@ export const initRouting = (app) => {
     router.use(bodyParser.json());
 
     router.use(expressJWT({
-      secret: app.config.jwtSecret
+      secret: app.config.security.secret
     }).unless({
       path: ['/login']
     }));
